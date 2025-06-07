@@ -1,8 +1,8 @@
-import { AppBar, Avatar, Badge, Box, Icon, InputBase, styled, Toolbar, Typography } from '@mui/material'
+import { AppBar, Avatar, Badge, Box, Icon, InputBase, Menu, MenuItem, styled, Toolbar, Typography } from '@mui/material'
 import TwitterIcon from '@mui/icons-material/Twitter';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import React from 'react'
+import React, { useState } from 'react'
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -41,6 +41,7 @@ const UserIcons = styled(Box)(({theme}) => (
 ))
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false)
   return (
     <AppBar position='sticky'>
       <StyledToolbar>
@@ -52,16 +53,37 @@ const Navbar = () => {
           <Badge badgeContent={4} color="error" >
             <MailIcon />
           </Badge>
-          <Badge badgeContent={4} color="error">
+          <Badge badgeContent={2} color="error">
             <NotificationsIcon />
           </Badge>
-          <Avatar sx={{width: 40, height: 40}} alt="Saba" src="https://img.freepik.com/premium-vector/girl-character-vector_101266-28463.jpg" />
+          <Avatar
+          onClick={() => setMenuOpen(true)}
+          sx={{width: 40, height: 40}} alt="Saba" src="https://img.freepik.com/premium-vector/girl-character-vector_101266-28463.jpg" />
         </Icons>
-        <UserIcons>
+        <UserIcons onClick={() => setMenuOpen(true)}>
           <Avatar sx={{width: 40, height: 40}} alt="Saba" src="https://img.freepik.com/premium-vector/girl-character-vector_101266-28463.jpg" />
           <Typography variant='span'>Saba</Typography>
         </UserIcons>
       </StyledToolbar>
+      <Menu
+        id="demo-positioned-menu"
+        aria-labelledby="demo-positioned-button"
+        // anchorEl={anchorEl}
+        open={menuOpen}
+        onClose={() => setMenuOpen(false)}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'right',
+        }}
+      >
+        <MenuItem>Profile</MenuItem>
+        <MenuItem>My account</MenuItem>
+        <MenuItem>Logout</MenuItem>
+      </Menu>
     </AppBar>
   )
 }
