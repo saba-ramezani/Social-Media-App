@@ -10,7 +10,7 @@ import BedtimeIcon from '@mui/icons-material/Bedtime';
 
 const SideBar = () => {
   return (
-    <Box flex={1} p={2} sx={{display: {xs: "none", sm: "block"}}}>
+    <Box flex={1} p={2} sx={{display: {xs: "none", sm: "block"}}} position={"sticky"}>
       <List>
         <ListItem>
           <ListItemButton component="a" href='#home'>
