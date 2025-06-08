@@ -8,7 +8,7 @@ import GroupIcon from '@mui/icons-material/Group';
 import ArticleIcon from '@mui/icons-material/Article';
 import BedtimeIcon from '@mui/icons-material/Bedtime';
 
-const SideBar = () => {
+const SideBar = ({mode, setMode}) => {
   return (
     <Box flex={1} p={2} sx={{display: {xs: "none", md: "block"}}} position={"sticky"}>
       <Box position={"fixed"}>
@@ -74,7 +74,7 @@ const SideBar = () => {
               <ListItemIcon>
                 <BedtimeIcon />
               </ListItemIcon>
-              <Switch />
+              <Switch onChange={() => setMode(mode === "light" ? "dark" : "light")} />
             </ListItemButton>
           </ListItem>
         </List>

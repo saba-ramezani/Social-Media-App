@@ -25,7 +25,7 @@ const Add = () => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={{backgroundColor: 'white', width: 450, height: 350, py: 1, px: 3, borderRadius: "10px", border: "none"}}>
+        <Box bgcolor={"background.default"} color={"text.primary"} sx={{width: 450, height: 350, py: 1, px: 3, borderRadius: "10px", border: "none"}}>
           <Typography variant="h5" textAlign={"center"} color="primary" sx={{py: 1, borderBottomColor: 'primary', borderBottomWidth: 1, borderBottomStyle: 'solid'}}>
               Create Post
           </Typography>

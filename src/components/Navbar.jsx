@@ -46,9 +46,9 @@ const Navbar = () => {
     <AppBar position='sticky'>
       <StyledToolbar>
         <TwitterIcon sx={{fontSize: {xs: 25, sm: 40}}}/>
-        <SearchBar>
-          <InputBase placeholder='search...' />
-        </SearchBar>
+        <Box bgcolor={"background.default"} sx={{width: '400px', px: 2, borderRadius: 2}}>
+          <InputBase fullWidth placeholder='search...' />
+        </Box>
         <Icons>
           <Badge badgeContent={4} color="error" >
             <MailIcon />
