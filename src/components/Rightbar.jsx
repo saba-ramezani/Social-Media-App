@@ -5,7 +5,7 @@ import fakePosts from '../data/posts'
 
 const Conversations = () => {
   return (
-     <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+     <List sx={{ width: '100%', height: 'fit-content', maxWidth: 360, bgcolor: 'background.paper' }}>
       <ListItem alignItems="flex-start">
         <ListItemAvatar>
           <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
@@ -74,37 +74,45 @@ const Conversations = () => {
 
 const RightBar = () => {
   return (
-    <Box flex={2} p={4} sx={{display: {xs: "none", lg: "block"}}} maxWidth={400}>
+    <Box flex={2} p={4} sx={{ display: { xs: "none", lg: "block" } }} maxWidth={400}>
       <Box position={"fixed"} width={300} maxWidth={400}>
+        
         <Typography variant='h5' fontWeight={300}>
           Online Friends
-          <AvatarGroup max={7} sx={{marginTop: 2}}>
-            {users.map((user) => (
-              <Avatar alt={user.name} src={user.avatar} />
-            ))}
-          </AvatarGroup>
         </Typography>
-        <Typography variant='h5' fontWeight={300} sx={{marginTop: 4}}>
+        <AvatarGroup max={7} sx={{ marginTop: 2 }}>
+          {users.map((user) => (
+            <Avatar key={user.name} alt={user.name} src={user.avatar} />
+          ))}
+        </AvatarGroup>
+
+        <Typography variant='h5' fontWeight={300} sx={{ marginTop: 4 }}>
           Latest Photos
-          <ImageList sx={{ height: 164, marginTop: 2 }} cols={3} rowHeight={164} >
-            {fakePosts.map((item) => (
-              <ImageListItem key={item.id}>
-                <img
-                  src={item.mediaSrc}
-                  alt={"image"}
-                  loading="lazy"
-                />
-              </ImageListItem>
-            ))}
-          </ImageList>
         </Typography>
-        <Typography variant='h5' fontWeight={300} sx={{marginTop: 4}}>
+        <ImageList sx={{ height: 164, marginTop: 2 }} cols={3} rowHeight={164}>
+          {fakePosts.map((item) => (
+            <ImageListItem key={item.id}>
+              <img src={item.mediaSrc} alt="image" loading="lazy" />
+            </ImageListItem>
+          ))}
+        </ImageList>
+
+        <Typography variant='h5' fontWeight={300} sx={{ marginTop: 4 }}>
           Latest Conversations
-          <Conversations />
         </Typography>
+        <Box
+          sx={{
+            maxHeight: '300px',
+            overflowY: 'auto',
+            pr: 1,
+          }}
+        >
+          <Conversations />
+        </Box>
+
       </Box>
-    </Box >
-  )
-}
+    </Box>
+  );
+};
 
 export default RightBar
